@@ -1,4 +1,5 @@
 package application;
+
 import controllers.PremierePageController;
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
@@ -9,6 +10,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
+import noyau.*;
 
 public class Main extends Application { /// charger la fenetre principale et lancer l'application
 	@Override
@@ -42,6 +44,34 @@ public class Main extends Application { /// charger la fenetre principale et lan
 		}
 	}
 	public static void main(String[] args) {
-		launch(args);
+	//	launch(args);
+	Pin pin1 = new Pin(true , "pin1");
+	Pin pin2 = new Pin(true , "pin1");
+	Pin pin3 = new Pin(true , "pin1");
+	Pin pin4 = new Pin(true , "pin1");
+	pin1.setEtat(EtatLogique.ONE);
+	pin2.setEtat(EtatLogique.ONE);
+	pin3.setEtat(EtatLogique.ONE);
+	pin4.setEtat(EtatLogique.ONE);
+	Splitter splitter = new Splitter(4,2,"splitter");
+	Circuit.relier(pin1, splitter, 0, 0);
+	Circuit.relier(pin2, splitter, 0, 1);
+	Circuit.relier(pin3, splitter, 0, 2);
+	Circuit.relier(pin4, splitter, 0, 3);
+	splitter.initSorties();
+	pin1.evaluer();
+	pin2.evaluer();
+	pin3.evaluer();
+	pin4.evaluer();
+	
+	for (int i=0;i<splitter.getNombreSortie();i++)
+	{
+	System.out.println(((FilSp)splitter.getSorties()[i]).getFils());
+	System.out.println("------------------------------------------------");
+	System.out.println("------------------------------------------------");
+	}
+
+
+
 	}
 }

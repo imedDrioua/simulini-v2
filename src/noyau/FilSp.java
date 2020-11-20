@@ -25,6 +25,10 @@ public class FilSp extends Fil{
     public ArrayList<Fil> getFils(){
         return this.fils;
     }
+    @Override
+    public void evaluer(){
+      for (Fil fil : this.fils) fil.evaluer();
+    }
 
 
 

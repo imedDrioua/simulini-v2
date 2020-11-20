@@ -42,13 +42,13 @@ import noyau.Sequentiels;
 
 public abstract class Controller {
 /*		La classe controller est la classe la plus generale dans le package controllers , 
- * tous les controlleurs Herite de cette classe, utilisée pour regroupée des attributs et des methodes.
+ * tous les controlleurs Herite de cette classe, utilisï¿½e pour regroupï¿½e des attributs et des methodes.
  */
 	protected int sauv;
 
-	protected  Composant cmp; //utilisé si un composant est selectionné 
+	protected  Composant cmp; //utilisï¿½ si un composant est selectionnï¿½ 
 	protected static ClickDroitFil clickDroitFilFenetre; 
-	protected static Polyline lineDroit;  //utilisé si un fil (Polyline)  est selectionné
+	protected static Polyline lineDroit;  //utilisï¿½ si un fil (Polyline)  est selectionnï¿½
 	public static Stage homeWindow;
 	public static Scene homeScene;
 	protected static ClickSouris2 clickSouris2; //
@@ -56,27 +56,27 @@ public abstract class Controller {
 	protected double x, y;
 	protected int switching = 0; //La position du polyline en cas de mouvements 
 
-	protected static Line guideFilX = new Line(); //Les guides du fil (du traçage) 
+	protected static Line guideFilX = new Line(); //Les guides du fil (du traï¿½age) 
 	protected static Line guideFilY = new Line(); 
 
 	protected Composant source; //La relation entre les composants
 
 	public static boolean simul = false;  // true si :mode de creation , faux sinon 
-	protected static ArrayList<Pin> ListTextPin = null; //la liste des pins quand l'utilisateur selectionne l'ordre des entrées (table de verite ou circuit personnaliséé)
-	protected static ArrayList<Text> ListText = null;   //la liste des numeros quand l'utilisateur selectionne l'ordre des entrées (table de verite ou circuit personnaliséé)
+	protected static ArrayList<Pin> ListTextPin = null; //la liste des pins quand l'utilisateur selectionne l'ordre des entrï¿½es (table de verite ou circuit personnalisï¿½ï¿½)
+	protected static ArrayList<Text> ListText = null;   //la liste des numeros quand l'utilisateur selectionne l'ordre des entrï¿½es (table de verite ou circuit personnalisï¿½ï¿½)
 	
 	//pour les pins et les numeros de sorties 
 	protected static ArrayList<Pin> ListTextPin2 = null;
 	protected static ArrayList<Text> ListText2 = null;
 
 	protected Composant destination; //La relation entre les composants
-	protected int entree; // le numero de l'entrée
+	protected int entree; // le numero de l'entrï¿½e
 	protected int sortie; // le numero de la sortie
 	protected int rel;
 
-	protected static ArrayList<Button> rightBareButtons = new ArrayList<Button>() ; //pour les desactivés en mode de creation
+	protected static ArrayList<Button> rightBareButtons = new ArrayList<Button>() ; //pour les desactivï¿½s en mode de creation
 	
-	protected Circle relieCercle ; //quand un fil est relié , un cercle est generé au niveau du l'entrée
+	protected Circle relieCercle ; //quand un fil est reliï¿½ , un cercle est generï¿½ au niveau du l'entrï¿½e
 	
 	protected FadeTransition fadeTransition = new FadeTransition(Duration.millis(500));
 
@@ -125,7 +125,7 @@ public abstract class Controller {
 		EventHandler<MouseEvent> event1 = new javafx.event.EventHandler<MouseEvent>() {
 		/* "On Dragg" d'un fil (Polyline) :
 		 * Fonctionnement : a chaque fois on fait bouger un fil, on supprime les 2 premier noeuds , et on insers 2 autre qui depant 
-		 * de la position de la souris avec un certain traitement spécefique . 
+		 * de la position de la souris avec un certain traitement spï¿½cefique . 
 		 */
 		
 			@Override
@@ -164,7 +164,7 @@ public abstract class Controller {
 
 		EventHandler<MouseEvent> event = new javafx.event.EventHandler<MouseEvent>() {
 		/*"on press"  d'un fil (Polyline) :
-		 * quand on clic sur un polyline ,un autre polyline est creé,ajouté au workspace et ajouté
+		 * quand on clic sur un polyline ,un autre polyline est creï¿½,ajoutï¿½ au workspace et ajoutï¿½
 		 * comme fils au polyline premier avec un certain traitement specifique ".  
 		 */
 			@Override
@@ -290,13 +290,15 @@ public abstract class Controller {
 				}
 			}
 		};
+		/////////////////////Events///////////////////////////////////////////////////////////////////////
 		line.setOnMousePressed(event);
 		line.setOnMouseDragged(event1);
+		//////////////////////////////////////////////////////////////////////////////////////////////////
 		line.setOnMouseReleased(new EventHandler<MouseEvent>() {
-		/*Fonctionnement :"La relation " entre composants ,Si le polyline est relaché dans un autre composant
+		/*Fonctionnement :"La relation " entre composants ,Si le polyline est relachï¿½ dans un autre composant
 		 * alors: 
-		 * 		Si relaché dans une entré ,une relation se fait entre le composant source du polyline ,et ce dernier .
-		 * 		Sinon : le polyline est supprimé .
+		 * 		Si relachï¿½ dans une entrï¿½ ,une relation se fait entre le composant source du polyline ,et ce dernier .
+		 * 		Sinon : le polyline est supprimï¿½ .
 		 */
 			@Override
 			public void handle(MouseEvent arg0) {
@@ -308,11 +310,11 @@ public abstract class Controller {
 						workSpace.getChildren().remove(guideFilY);
 						int der = line.getPoints().size() - 1;
 						if (( destination = intersectionFilComposants(arg0.getX(), arg0.getY())) != null) {
-							/*rel : si 0 n'est pas relié a une entrée ( polyline à supprimé ) ,
+							/*rel : si 0 n'est pas reliï¿½ a une entrï¿½e ( polyline ï¿½ supprimï¿½ ) ,
 							*		si 1 
 							*/
 
-							//Polyline n'est pas relaché dans un composant .
+							//Polyline n'est pas relachï¿½ dans un composant .
 							if (rel == 0) {
 								// suppression du fil
 								InfoPolyline infoline = Circuit.getInfoPolylineFromPolyline(line);
@@ -389,7 +391,7 @@ public abstract class Controller {
 		});
 	}
 	public void playSound() {
-	//le son quand un fil est relié
+	//le son quand un fil est reliï¿½
 		try {
 			url =getClass().getResource("sound.wav");
 			AudioInputStream audioInputStream = AudioSystem
@@ -403,7 +405,7 @@ public abstract class Controller {
 	}
 
 	private Composant intersectionFilComposants(Double x, Double y) {
-	/*Role : Pour avoir si un fil est relaché dans l'un des composants du Workspace 
+	/*Role : Pour avoir si un fil est relachï¿½ dans l'un des composants du Workspace 
 	 */
 		Composant cmp = null;
 		boolean trouv = false;
@@ -421,7 +423,7 @@ public abstract class Controller {
 	}
 
 	public int intersectionFilComposant(ImageView imgCmp, double Xfil, double Yfil) {
-		/*Role : Pour avoir si un fil est relaché dans l'espace d'un composant ou pas 
+		/*Role : Pour avoir si un fil est relachï¿½ dans l'espace d'un composant ou pas 
 		 */
 		
 		/*
@@ -435,7 +437,7 @@ public abstract class Controller {
 		double XImg = imgCmp.getLayoutX();
 		double Yimg = imgCmp.getLayoutY();
 		double ci = 0; 
-		if(imgCmp.getId().equals("CircuitIntegre") || imgCmp.getId().equals("CircuitIntegreSequentiel")) //un traitement pour les coordonnées des circuit integrées
+		if(imgCmp.getId().equals("CircuitIntegre") || imgCmp.getId().equals("CircuitIntegreSequentiel")) //un traitement pour les coordonnï¿½es des circuit integrï¿½es
 			ci = 5;
 		
 		if ((Xfil >= XImg-ci) && (XImg + imgCmp.getFitWidth() > Xfil) && (Yfil >= Yimg)
@@ -580,7 +582,7 @@ public abstract class Controller {
 	}
 	
 	public void relieCercle(double x, double y) {
-	/*Role : creer une cercle quand un fil est relié */
+	/*Role : creer une cercle quand un fil est reliï¿½ */
 		relieCercle = new Circle();
 		relieCercle.setRadius(5);
 		relieCercle.setFill(Color.TRANSPARENT);
