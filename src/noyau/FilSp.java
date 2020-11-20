@@ -10,6 +10,9 @@ public class FilSp extends Fil{
     private static final long serialVersionUID = 1L;
 
     private ArrayList<Fil> fils ;
+    public FilSp(){
+        this.fils = new ArrayList<Fil>();
+    }
 
     public FilSp(ArrayList<Fil> fils){
         this.fils=fils;
