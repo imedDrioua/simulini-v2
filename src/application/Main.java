@@ -44,8 +44,8 @@ public class Main extends Application { /// charger la fenetre principale et lan
 		}
 	}
 	public static void main(String[] args) {
-	//	launch(args);
-	Pin pin1 = new Pin(true , "pin1");
+		launch(args);
+	/*Pin pin1 = new Pin(true , "pin1");
 	Pin pin2 = new Pin(true , "pin1");
 	Pin pin3 = new Pin(true , "pin1");
 	Pin pin4 = new Pin(true , "pin1");
@@ -58,7 +58,6 @@ public class Main extends Application { /// charger la fenetre principale et lan
 	Circuit.relier(pin2, splitter, 0, 1);
 	Circuit.relier(pin3, splitter, 0, 2);
 	Circuit.relier(pin4, splitter, 0, 3);
-	splitter.initSorties();
 	pin1.evaluer();
 	pin2.evaluer();
 	pin3.evaluer();
@@ -66,10 +65,11 @@ public class Main extends Application { /// charger la fenetre principale et lan
 	
 	for (int i=0;i<splitter.getNombreSortie();i++)
 	{
+	System.out.println("*********************************************-");
 	System.out.println(((FilSp)splitter.getSorties()[i]).getFils());
 	System.out.println("------------------------------------------------");
 	System.out.println("------------------------------------------------");
-	}
+	}*/
 
 
 

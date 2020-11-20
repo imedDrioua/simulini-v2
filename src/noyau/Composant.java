@@ -34,6 +34,9 @@ public abstract class Composant implements Serializable{
 		if (!nom.isEmpty())this.nom =nom;
 		Arrays.fill(etatFinal, EtatLogique.HAUTE_IMPEDANCE);
 	}
+	public Composant(){
+		
+	}
 	public abstract void setCord();
 	public abstract void genererSorties();
 	public abstract boolean valider();  // verifier si le composant est pret a executer sa fonction logique 
@@ -47,10 +50,10 @@ public abstract class Composant implements Serializable{
 
 				for (int i = 0; i < nombreSortie; i++) 
 				{
-					if(sorties[i].getEtatLogiqueFil().getNum() != etatFinal[i].getNum())  //verifier si l'etat precedent du composant a changé ou non 
+					if(sorties[i].getEtatLogiqueFil().getNum() != etatFinal[i].getNum())  //verifier si l'etat precedent du composant a changï¿½ ou non 
 					{
 						etatFinal[i]=sorties[i].getEtatLogiqueFil(); //mettre a jour l'etat final du composant 
-						sorties[i].evaluer(); //passer au composant suivant relié au fil de sortie 
+						sorties[i].evaluer(); //passer au composant suivant reliï¿½ au fil de sortie 
 					}
 				}		
 			} catch (StackOverflowError e) {
@@ -73,7 +76,7 @@ public abstract class Composant implements Serializable{
 
 			i++;
 		}
-		if(i < nombreSortie) //  mettre les fils restants à 0
+		if(i < nombreSortie) //  mettre les fils restants ï¿½ 0
 			for (int j = i; j < nombreSortie; j++) {
 				sorties[j].setEtatLogiqueFil(EtatLogique.ZERO);
 			}
@@ -101,7 +104,7 @@ public abstract class Composant implements Serializable{
 		int i =0;
 		EtatLogique etatLogique = EtatLogique.ONE;
 		while(i<nombreEntree && etatLogique==EtatLogique.ONE) {
-			if(entrees[i] == null) // verifier si toutes les entrees du composants sont reliées a un autre composant 
+			if(entrees[i] == null) // verifier si toutes les entrees du composants sont reliï¿½es a un autre composant 
 				etatLogique = null;
 			else if(entrees[i].getEtatLogiqueFil().getNum() == EtatLogique.HAUTE_IMPEDANCE.getNum()) //  verifier si le fil d'entree est en haute impedence . 
 				etatLogique = EtatLogique.HAUTE_IMPEDANCE;
@@ -163,10 +166,10 @@ public abstract class Composant implements Serializable{
 		return reslut;
 	}
 	
-	public  void derelierComp() { // pour derelier le composant de ces fils d'entrees  (le composant à supprimer)
+	public  void derelierComp() { // pour derelier le composant de ces fils d'entrees  (le composant ï¿½ supprimer)
 		for (int i = 0; i < nombreEntree; i++) {
 			if (entrees[i] != null) {
-				if (! entrees[i].getSource().equals(this)) { // pour savoir si une entree est relié avec une sortie du mm composant
+				if (! entrees[i].getSource().equals(this)) { // pour savoir si une entree est reliï¿½ avec une sortie du mm composant
 					entrees[i].derelierCompFromDestination(this);
 					ImageView imageView = Circuit.getImageFromComp(this);
 					Polyline polyline = entrees[i].polylineParPoint(lesCoordonnees.coordReelesEntrees(imageView, i));
@@ -179,7 +182,7 @@ public abstract class Composant implements Serializable{
 		}
 	}
 	
-	public void derelierEntreeFromComp(Fil fil) { // pour enlever une le fil donné des entrees du composant
+	public void derelierEntreeFromComp(Fil fil) { // pour enlever une le fil donnï¿½ des entrees du composant
 		for (int i = 0; i < nombreEntree; i++) {
 			if (entrees[i] != null) {
 				if (entrees[i].equals(fil)) {
@@ -189,7 +192,7 @@ public abstract class Composant implements Serializable{
 		}
 	}
 	
-	public void relierANouveau() { // elle permet de relier à nouveau le composant si il est derelier de ces fils
+	public void relierANouveau() { // elle permet de relier ï¿½ nouveau le composant si il est derelier de ces fils
 		for (int i = 0; i < nombreEntree; i++) {
 			if (entrees[i] != null) {
 				ImageView imageView = Circuit.getImageFromComp(this);
@@ -237,14 +240,14 @@ public abstract class Composant implements Serializable{
 	public boolean isDessocier() { /// retourne vrai si le composant est derelier
 		boolean dessocier = true ;
 		int i = 0;
-		while(( i < nombreEntree) && (dessocier == true)) { /// savoir si les entrees de ce composants sont reliées
+		while(( i < nombreEntree) && (dessocier == true)) { /// savoir si les entrees de ce composants sont reliï¿½es
 			if (entrees[i] != null) {
 				dessocier = false;
 			}
 			else i++;
 		}
 		i = 0;
-		while((i < nombreSortie) && (dessocier == true) ) /// /// savoir si les sorties de ce composants sont reliées
+		while((i < nombreSortie) && (dessocier == true) ) /// /// savoir si les sorties de ce composants sont reliï¿½es
 		{
 			if (sorties[i].getDestination().size() != 0) {
 				dessocier = false ;
@@ -255,7 +258,7 @@ public abstract class Composant implements Serializable{
 		
 	}
 	
-	public void validerComposant() { /// utiliser pour detecter les erreurs relative à un composant donné
+	public void validerComposant() { /// utiliser pour detecter les erreurs relative ï¿½ un composant donnï¿½
 		// TODO Auto-generated method stub
 		ArrayList<ExceptionProgramme> arrayList = new ArrayList<ExceptionProgramme>();
 		for (int i = 0; i < nombreEntree; i++) { /// savoir si une entree est manquante
@@ -263,7 +266,7 @@ public abstract class Composant implements Serializable{
 				arrayList.add(new EntreeManquante(TypesExceptions.ERREUR, this, i));
 			}
 		}
-		if (arrayList.size() == nombreEntree) { /// si toutes les entrees sont dereliées
+		if (arrayList.size() == nombreEntree) { /// si toutes les entrees sont dereliï¿½es
 			Circuit.AjouterUneException(new ComposantNonRelier(TypesExceptions.ALERTE, this));
 		}
 		else {
@@ -274,7 +277,7 @@ public abstract class Composant implements Serializable{
 		}
 	}
 
-	public void setNombreSortieAndUpdateFil(int nombreSortie) { /// mettre à jour le nombre de sortie et generer les fils nécessaires
+	public void setNombreSortieAndUpdateFil(int nombreSortie) { /// mettre ï¿½ jour le nombre de sortie et generer les fils nï¿½cessaires
 		this.nombreSortie = nombreSortie;
 		for (int i = 0; i < nombreSortie; i++) {
 			sorties[i] = new Fil(this);
