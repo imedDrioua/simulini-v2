@@ -1,0 +1,55 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+#plusNbEntrees,#nextDirection,#previousDirection,#moinsNbEntrees{
+	/* @SuppressWarning */
+-fx-background-color :   #303337;
+/* @SuppressWarning */
+-fx-border-color : #b2b2b2;
+/* @SuppressWarning */
+-fx-border-radius : 20px;
+}
+
+#plusNbBits,#moinsNbBits,#nextFront,#previousFront,#nextCompteur,#previousCompteur,#previousFront,#plusNbEntrees,#nextDirection,#previousDirection,#moinsNbEntrees,#nextFront,#nextput,#previousput,#previousDecalage,#nextDecalage{
+/* @SuppressWarning */
+-fx-background-color :   #303337;
+/* @SuppressWarning */
+-fx-border-color :  #303337;
+/* @SuppressWarning */
+-fx-border-radius : 20px;
+/* @SuppressWarning */
+}
+
+#plusNbBits:hover,#moinsNbBits:hover,#nextFront:hover,#previousFront:hover,#nextCompteur:hover,#previousCompteur:hover,#previousFront:hover,#plusNbEntrees:hover,#nextDirection:hover,#previousDirection:hover,#moinsNbEntrees:hover,#nextFront:hover,#nextput:hover,#previousput:hover,#previousDecalage:hover,#nextDecalage:hover{
+	/* @SuppressWarning */
+	-fx-background-color :   #303337;
+	/* @SuppressWarning */
+	-fx-border-color : #E4E4E4;
+	/* @SuppressWarning */
+	-fx-border-radius : 20px;
+	}
+
+#mdf,#annuler{
+
+	/* @SuppressWarning */
+   -fx-background-color: #303337;
+   /* @SuppressWarning */
+   -fx-text-fill:#e4e4e4;
+   /* @SuppressWarning */
+   -fx-wrap-text: true;
+   /* @SuppressWarning */
+   -fx-effect: dropshadow( three-pass-box, #7c7878, 10.0, 0.0, 0.0, 0.0);
+   /* @SuppressWarning */
+   -fx-cursor:hand;
+
+}
+#mdf:hover,#annuler:hover{
+	/* @SuppressWarning */ 
+  -fx-background-color:#7c7878;
+  /* @SuppressWarning */
+  -fx-text-fill: #e4e4e4;
+  
+}
+#label,#frequance{
+	/* @SuppressWarning */
+	-fx-text-inner-color : #b2b2b2;
+}

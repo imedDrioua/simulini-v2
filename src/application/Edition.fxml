@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="278.0" prefWidth="242.0" style="-fx-border-color: #000000; -fx-background-color: #4B535E;" stylesheets="@../styleFile/edition.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomeController">
+   <children>
+      <Button fx:id="annuler" layoutX="3.0" layoutY="4.0" mnemonicParsing="false" onAction="#annuler" prefHeight="42.0" prefWidth="236.0" text="  Annuler                              CTRL+Z          ">
+         <font>
+            <Font name="Calisto MT" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button fx:id="couper" layoutX="3.0" layoutY="56.0" mnemonicParsing="false" onAction="#couper" prefHeight="42.0" prefWidth="236.0" text=" Couper                                CTRL+X         ">
+         <font>
+            <Font name="Calisto MT" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button fx:id="copier" layoutX="3.0" layoutY="98.0" mnemonicParsing="false" onAction="#copier" prefHeight="42.0" prefWidth="236.0" text=" Copier                                 CTRL+C         " textFill="WHITE">
+         <font>
+            <Font name="Calisto MT" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="supprimer" layoutX="3.0" layoutY="189.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="42.0" prefWidth="236.0" text="Supprimer                           SUPPR           ">
+         <font>
+            <Font name="Calisto MT" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="coller" alignment="CENTER" layoutX="3.0" layoutY="141.0" mnemonicParsing="false" onAction="#coller" prefHeight="42.0" prefWidth="236.0" text=" Coller                                  CTRL+V         ">
+         <font>
+            <Font name="Calisto MT" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Line endX="100.0" layoutX="115.0" layoutY="46.0" startX="-100.0" style="-fx-stroke: #535c68;" />
+      <Line endX="100.0" layoutX="115.0" layoutY="189.0" startX="-100.0" style="-fx-stroke: #535c68;" />
+      <Button fx:id="supprimerTout" alignment="BASELINE_LEFT" layoutX="3.0" layoutY="231.0" mnemonicParsing="false" onAction="#supprimerTout" prefHeight="42.0" prefWidth="236.0" text="  Supprimer tout">
+         <font>
+            <Font name="Calisto MT" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
+</Pane>
