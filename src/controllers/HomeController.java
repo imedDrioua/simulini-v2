@@ -106,6 +106,7 @@ import noyau.EditableDraggableText;
 import noyau.Encodeur;
 import noyau.EtatLogique;
 import noyau.Fil;
+import noyau.FilSp;
 import noyau.Front;
 import noyau.Horloge;
 import noyau.InfoPolyline;
@@ -117,6 +118,7 @@ import noyau.Not;
 import noyau.Or;
 import noyau.Pin;
 import noyau.RST;
+import noyau.Ram;
 import noyau.RegistreDecalage;
 import noyau.Sauvegarde;
 import noyau.Sequentiels;
@@ -3884,7 +3886,20 @@ public class HomeController extends Controller {
 
 						{	    	        			    	        	
 						EditableDraggableText text=new EditableDraggableText(dragImageView.getLayoutX(),dragImageView.getLayoutY(),"T");
-							RamGraph ramGraph= new RamGraph(dragImageView.getLayoutX(),dragImageView.getLayoutY(),workSpace,homeWindow);
+							Ram ram = new Ram(4,4);
+							ram.initialiser(new RamGraph(dragImageView.getLayoutX(),dragImageView.getLayoutY(),workSpace,homeWindow,4,4));
+							FilSp fsp = new FilSp();
+							Fil fil= new Fil();
+							fil.setEtatLogiqueFil(EtatLogique.ONE);
+							Fil fil1= new Fil();
+							fil1.setEtat(EtatLogique.ONE);
+							fsp.getFils().add(fil);
+							fsp.getFils().add(fil1);
+							//ram.setSor(fsp);
+							ram.setAdr(fsp);
+		                    ram.ecriture();
+							ram.lecture();
+							
 						workSpace.getChildren().add(text);
 					//	workSpace.getChildren().add(ramGraph);
 							text.getChildren().get(0).setOnMouseClicked(new EventHandler<MouseEvent>() { ///gestion du click long pour ecrire dans le label
