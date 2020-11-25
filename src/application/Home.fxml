@@ -36,7 +36,7 @@
                   <Line endX="139.2928924560547" endY="-0.7070963382720947" startX="-40.0" stroke="#707070" strokeWidth="3.0" />
                   <TabPane fx:id="tabPane" prefHeight="526.0" prefWidth="179.0" style="-fx-background-color: #4b535e;" styleClass="tabpane" stylesheets="@../styleFile/borderPane.css" tabClosingPolicy="UNAVAILABLE">
                     <tabs>
-                        <Tab fx:id="outils" style="-fx-pref-width: 40; -fx-pref-height: 10; -fx-background-radius: 5 5 5 5;" styleClass="outils">
+                        <Tab fx:id="outils" style="-fx-pref-width: 30; -fx-pref-height: 10; -fx-background-radius: 5 5 5 5;" styleClass="outil">
                            <content>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0" />
                            </content>
@@ -196,7 +196,7 @@
                               </AnchorPane>
                            </content>
                         </Tab>
-                        <Tab fx:id="portes" style="-fx-pref-width: 40; -fx-pref-height: 10; -fx-background-radius: 5 5 5 5;" styleClass="portes">
+                        <Tab fx:id="portes" style="-fx-pref-width: 30; -fx-pref-height: 10; -fx-background-radius: 5 5 5 5;" styleClass="portes">
                            <content>
                               <AnchorPane prefHeight="512.0" prefWidth="185.0" style="-fx-background-color: #4b535e;">
                                  <children>
@@ -352,7 +352,7 @@
                                  </padding>
                               </AnchorPane>
                            </content></Tab>
-                      <Tab fx:id="seq" style="-fx-pref-width: 40; -fx-pref-height: 10; -fx-background-radius: 5 5 5 5;" styleClass="seq">
+                      <Tab fx:id="seq" style="-fx-pref-width: 30; -fx-pref-height: 10; -fx-background-radius: 5 5 5 5;" styleClass="seq">
                            <content>
                               <AnchorPane prefHeight="513.0" prefWidth="179.0" style="-fx-background-color: #4b535e;">
                                  <children>
@@ -511,7 +511,7 @@
                                  </padding>
                               </AnchorPane>
                            </content></Tab>
-                      <Tab fx:id="comb" style="-fx-pref-width: 40; -fx-pref-height: 10; -fx-background-radius: 5 5 5 5;" styleClass="comb">
+                      <Tab fx:id="comb" style="-fx-pref-width: 30; -fx-pref-height: 10; -fx-background-radius: 5 5 5 5;" styleClass="comb">
                            <content>
                               <AnchorPane prefHeight="513.0" prefWidth="179.0" style="-fx-background-color: #4b535e;">
                                  <children>
@@ -673,6 +673,48 @@
                                  </padding>
                               </AnchorPane>
                            </content></Tab>
+                        <Tab fx:id="memory" style="-fx-pref-width: 30; -fx-pref-height: 10; -fx-background-radius: 5 5 5 5;" styleClass="memory">
+                           <content>
+                              <AnchorPane prefHeight="513.0" prefWidth="179.0" style="-fx-background-color: #4b535e;">
+                                 <children>
+                                    <ScrollPane layoutX="10.0" prefHeight="494.0" prefWidth="169.0" style="-fx-background-color: #4b535e;" stylesheets="@../styleFile/scrolPane.css" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="-14.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="5.0">
+                                       <content>
+                                          <VBox prefHeight="499.0" prefWidth="178.0" style="-fx-background-color: #4b535e;">
+                                             <children>
+                                                <Label fx:id="tram" prefHeight="25.0" prefWidth="58.0" style="-fx-background-color: #303337; -fx-background-radius: 10 10 10 10; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0.5, 2.0, 2.0);" stylesheets="@../styleFile/label.css" text="RAM" textAlignment="CENTER" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="Calisto MT" size="14.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets left="13.0" />
+                                                   </padding>
+                                                   <VBox.margin>
+                                                      <Insets left="53.0" top="15.0" />
+                                                   </VBox.margin>
+                                                </Label>
+                                                <AnchorPane prefHeight="99.0" prefWidth="100.0" style="-fx-background-color: #303337; -fx-background-radius: 32; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0.5, 2.0, 2.0);">
+                                                   <VBox.margin>
+                                                      <Insets left="30.0" right="40.0" top="15.0" />
+                                                   </VBox.margin>
+                                                   <children>
+                                                      <ImageView fx:id="ram" fitHeight="74.0" fitWidth="115.0" layoutX="17.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../Ram/ram.PNG" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </children>
+                                                </AnchorPane>
+                                             </children>
+                                          </VBox>
+                                       </content>
+                                    </ScrollPane>
+                                 </children>
+                                 <padding>
+                                    <Insets left="12.0" />
+                                 </padding>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
                     </tabs>
                      <VBox.margin>
                         <Insets left="5.0" top="5.0" />

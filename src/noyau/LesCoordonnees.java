@@ -26,7 +26,7 @@ public class LesCoordonnees implements Serializable{
 
 	}
 	
-	public int indexCoord(Coordonnees crd) { /// savoir le numero d'entree qui contient les coordonnées passé comme parametre
+	public int indexCoord(Coordonnees crd) { /// savoir le numero d'entree qui contient les coordonnï¿½es passï¿½ comme parametre
 		int i = 0;
 		while(i < nbCordEntree) {
 			if(cordEntree[i].equals(crd)) {
@@ -74,7 +74,7 @@ public class LesCoordonnees implements Serializable{
 	}	
 	public void rotationXY(ImageView imageView) { /// faire une rotation du composant
 		double perm ;
-		for(int i=0;i<nbCordEntree;i++) { /// inverser les coordonnées x et y des entrees
+		for(int i=0;i<nbCordEntree;i++) { /// inverser les coordonnï¿½es x et y des entrees
 			perm = cordEntree[i].getX();
 			cordEntree[i].setX(cordEntree[i].getY());
 			cordEntree[i].setY(perm);

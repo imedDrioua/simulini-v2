@@ -1,4 +1,4 @@
-.comb, .seq, .portes, .outils{
+.comb, .seq, .portes, .outils, .memory{
 	-fx-background-color : #e0e0d1;
 	-fx-focus-color: transparent;  
 	-fx-faint-focus-color: transparent;
@@ -7,7 +7,7 @@
     }
     
     
-    .comb:hover, .seq:hover, .portes:hover, .outils:hover{
+    .comb:hover, .seq:hover, .portes:hover, .outils:hover, .memory:hover{
 	-fx-cursor: hand;
 	-fx-background-color : #ffffff;
     }
@@ -19,7 +19,7 @@
     }
     */
     
-    .comb:selected, .seq:selected, .portes:selected, .outils:selected {
+    .comb:selected, .seq:selected, .portes:selected, .outils:selected, .memory:selected{
     	    		-fx-background-color :  #303337;
     }
     .dialog-pane{

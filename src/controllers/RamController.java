@@ -11,6 +11,9 @@ public class RamController {
     private ArrayList<TextField> adresses ;
     private ArrayList<TextField> donees ;
     @FXML
+    private Circle horloge;
+    
+    @FXML
     private TextField adr1;
 
     @FXML
@@ -75,9 +78,45 @@ public class RamController {
 
     @FXML
     private TextField type;
+    
+    @FXML
+    private Circle entreesDonees;
 
     @FXML
     private Circle entreeAdr;
+
+    public Circle getEntreeAdr(){
+        return this.entreeAdr;
+    }
+    public Circle getEntreeLec(){
+        return this.lecture;
+    }
+    public Circle getEntreeEcr(){
+        return this.ecriture;
+    }
+    
+    public Circle getEntreeHor(){
+        return this.horloge;
+    }
+    public Circle getEntreeCs(){
+        return this.cs;
+    }
+    public Circle getSortieDonees(){
+        return this.sortieDonees;
+    }
+    public Circle getEntreeDonees(){
+        return this.entreesDonees;
+    }
+    
+    
+
+    
+
+
+
+    
+
+
     public void initRamController(){
         this.adresses = new ArrayList<TextField>();
         this.donees = new ArrayList<TextField>();

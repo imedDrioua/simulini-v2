@@ -96,14 +96,17 @@
                   <Font name="System Bold" size="11.0" />
                </font>
             </TextField>
-            <TextField editable="false" layoutX="14.0" layoutY="301.0" prefHeight="25.0" prefWidth="23.0" text="L" />
-            <TextField editable="false" layoutX="48.0" layoutY="302.0" prefHeight="25.0" prefWidth="23.0" text="E" />
-            <TextField editable="false" layoutX="78.0" layoutY="302.0" prefHeight="25.0" prefWidth="29.0" text="CS" />
-            <Circle fx:id="sortieDonees" fill="#303337" layoutX="252.0" layoutY="339.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="lecture" fill="#303337" layoutX="26.0" layoutY="339.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="ecriture" fill="#303337" layoutX="60.0" layoutY="339.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="cs" fill="#303337" layoutX="93.0" layoutY="339.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" />
+            <TextField editable="false" layoutX="6.0" layoutY="304.0" prefHeight="25.0" prefWidth="23.0" text="L" />
+            <TextField editable="false" layoutX="35.0" layoutY="304.0" prefHeight="25.0" prefWidth="23.0" text="E" />
+            <TextField editable="false" layoutX="63.0" layoutY="304.0" prefHeight="25.0" prefWidth="29.0" text="CS" />
+            <Circle fx:id="sortieDonees" fill="#303337" layoutX="286.0" layoutY="339.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="lecture" fill="#303337" layoutX="17.0" layoutY="339.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="ecriture" fill="#303337" layoutX="46.0" layoutY="339.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="cs" fill="#303337" layoutX="77.0" layoutY="339.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" />
             <TextField fx:id="type" alignment="CENTER" editable="false" layoutX="13.0" layoutY="273.0" prefHeight="25.0" prefWidth="94.0" />
+            <TextField editable="false" layoutX="96.0" layoutY="304.0" prefHeight="25.0" prefWidth="23.0" text="H" />
+            <Circle fx:id="horloge" fill="#303337" layoutX="107.0" layoutY="339.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="entreesDonees" fill="#303337" layoutX="205.0" layoutY="339.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" />
          </children>
       </AnchorPane>
       <Polyline fill="#303337" layoutX="-44.0" layoutY="110.0" points="100.0, -110.0, 53.757476806640625, -18.0, 53.757476806640625, 61.0, 100.0, 160.0" strokeType="INSIDE" />

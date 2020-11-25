@@ -32,12 +32,18 @@ public class Ram extends Composant {
         }
         this.ram= new HashMap<Integer,Integer>();
         this.chargementDesAdresses();
+        lesCoordonnees = new LesCoordonnees(2,1,4);
     }
 
     @Override
     public void setCord() {
-        // TODO Auto-generated method stub
-
+        lesCoordonnees.setCordEntreeInIndex(new Coordonnees(ramGraph.getController().getEntreeAdr().getLayoutX()-10,ramGraph.getController().getEntreeAdr().getLayoutY()),0);
+        lesCoordonnees.setCordEntreeInIndex(new Coordonnees(ramGraph.getController().getEntreeDonees().getLayoutX(),ramGraph.getController().getEntreeDonees().getLayoutY()),1);
+        lesCoordonnees.setCordCmdInIndex(new Coordonnees(ramGraph.getController().getEntreeLec().getLayoutX(),ramGraph.getController().getEntreeLec().getLayoutY()+2), 0);
+        lesCoordonnees.setCordCmdInIndex(new Coordonnees(ramGraph.getController().getEntreeEcr().getLayoutX(),ramGraph.getController().getEntreeEcr().getLayoutY()+2), 1);
+        lesCoordonnees.setCordCmdInIndex(new Coordonnees(ramGraph.getController().getEntreeHor().getLayoutX(),ramGraph.getController().getEntreeHor().getLayoutY()+2), 2);
+        lesCoordonnees.setCordCmdInIndex(new Coordonnees(ramGraph.getController().getEntreeCs().getLayoutX(),ramGraph.getController().getEntreeCs().getLayoutY()+2), 3);
+        lesCoordonnees.setCordSortieInIndex(new Coordonnees(ramGraph.getController().getSortieDonees().getCenterX(),ramGraph.getController().getEntreeCs().getLayoutY()+2), 0);
     }
 
     @Override

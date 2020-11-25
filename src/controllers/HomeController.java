@@ -268,6 +268,9 @@ public class HomeController extends Controller {
 	private Tab comonents;
 
 	@FXML
+    private Tab memory;
+
+	@FXML
 	private VBox vBoxComp;
 
 	@FXML
@@ -280,6 +283,12 @@ public class HomeController extends Controller {
 	private Label tPin;
 
 	public static boolean horloged = false;
+
+	@FXML
+    private Label tram;
+
+    @FXML
+    private ImageView ram;
 
 	@FXML
 	private ImageView pin;
@@ -773,6 +782,7 @@ public class HomeController extends Controller {
 			private static final long serialVersionUID = 7398456253712524242L;
 
 			{
+				put(ram,tram);
 				put(hex, tHex);
 				put(pin, tPin);
 				put(clock, tH);
@@ -800,7 +810,7 @@ public class HomeController extends Controller {
 			}
 		};
 		//// Ajouter pour chaque Composant les gestes de drag and drop
-
+        ajouterLeGestRam(ram);
 		ajouterLeGest(hex);
 		ajouterLeGest(pin);
 		ajouterLeGest(clock);
@@ -1284,6 +1294,143 @@ public class HomeController extends Controller {
 		});
 
 	}
+	private void ajouterLeGestRam(ImageView elementAdrager) {//Methode d'ajout de la fonctionallit� de drag and drop avant que le composant
+	//est ajout� dans le workSpace
+
+
+	elementAdrager.setOnMouseEntered(new EventHandler<MouseEvent>() {
+		@Override
+		public void handle(MouseEvent e) {
+			elementAdrager.setCursor(Cursor.HAND);
+			elemanrsMapFillMap.get(elementAdrager).setStyle("-fx-background-color:#000000;-fx-background-radius:10;-fx-effect:dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0.5, 2.0, 2.0)");
+			transitionDesComposants(elementAdrager);
+		}
+
+	});
+	elementAdrager.setOnMouseExited(new EventHandler<MouseEvent>() {
+		@Override
+		public void handle(MouseEvent e) {
+			elemanrsMapFillMap.get(elementAdrager).setStyle("-fx-background-color:#303337;-fx-background-radius:10;-fx-effect:dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0.5, 2.0, 2.0)");
+			elementAdrager.setCursor(Cursor.DEFAULT);
+		}
+	});
+
+	elementAdrager.setOnMousePressed(new EventHandler<MouseEvent>() { /// clicker sur un composant
+		@Override
+		public void handle(MouseEvent e) {
+			if (! simul) {
+
+				ImageView dragImageView = new ImageView();
+				dragImageView.setMouseTransparent(true);
+				dragImageView.toFront();
+				elementAdrager.setMouseTransparent(true);
+				elementAdrager.setCursor(Cursor.CLOSED_HAND);
+
+				elementAdrager.setOnDragDetected(new EventHandler<MouseEvent>() {
+					@Override
+					public void handle(MouseEvent e) {
+
+						if (! simul) {
+							SnapshotParameters snapParams = new SnapshotParameters();
+							snapParams.setFill(Color.TRANSPARENT);
+							dragImageView.setImage(elementAdrager.snapshot(snapParams, null));
+							workSpace.getChildren().add(dragImageView);
+
+							dragImageView.startFullDrag();
+
+							e.consume();
+						}
+					}
+				});
+
+				elementAdrager.setOnMouseDragged(new EventHandler<MouseEvent>() {
+					@Override
+					public void handle(MouseEvent e) {
+
+						if (! simul) {
+							Point2D localPoint = workSpace.sceneToLocal(new Point2D(e.getSceneX(), e.getSceneY()));
+							dragImageView.relocate(
+									(int)(localPoint.getX() - dragImageView.getBoundsInLocal().getWidth() / 2),
+									(int)(localPoint.getY() - dragImageView.getBoundsInLocal().getHeight() / 2 )
+									);
+
+							String xString=String.valueOf(dragImageView.getLayoutX());
+							String yString=String.valueOf(dragImageView.getLayoutY());
+							if((dragImageView.getLayoutX()>0 && dragImageView.getLayoutX()<workSpace.getMaxWidth() )&&(dragImageView.getLayoutY()>0))
+							{
+								guideX.setLayoutX(dragImageView.getLayoutX());
+								guideY.setLayoutY(dragImageView.getLayoutY());
+								guideXp.setLayoutX(dragImageView.getLayoutX()+ elementAdrager.getBoundsInLocal().getWidth()+1);
+								guideYp.setLayoutY(dragImageView.getLayoutY()+ elementAdrager.getBoundsInLocal().getHeight()+1);
+								afficheurX.setText("X : "+xString);
+								afficheurY.setText("Y : "+yString);
+
+							}
+
+							else
+							{
+								guideX.setLayoutX(0);
+								guideY.setLayoutY(0);
+								guideXp.setLayoutX(0);
+								guideYp.setLayoutY(0);
+								afficheurX.setText("X : 0");
+								afficheurY.setText("Y : 0");
+							}
+							e.consume();
+						}
+					}
+				});
+
+				elementAdrager.setOnMouseReleased(new EventHandler<MouseEvent>() { /// deposer un composant dans le workspace
+					@Override
+					public void handle(MouseEvent e) {
+						if (!simul) {
+							dragItem = null;
+							dragImageView.setMouseTransparent(false);
+							elementAdrager.setMouseTransparent(false);
+							elementAdrager.setCursor(Cursor.DEFAULT);
+							dragImageView.setId(elementAdrager.getId());
+							Ram ram = new Ram(4,4);
+							ram.initialiser(new RamGraph(dragImageView.getLayoutX(),dragImageView.getLayoutY(),workSpace,homeWindow,4,4));
+
+							//Image img = new Image(Circuit.getCompFromImage(dragImageView).generatePath());
+							//dragImageView.setImage(img);
+							//dragImageView.setFitHeight(img.getHeight());
+							//dragImageView.setFitWidth(img.getWidth());
+
+							if( dragImageView.getLayoutX() <= 0 ||dragImageView.getLayoutY() <= 0|| (e.getSceneX() +( dragImageView.getBoundsInLocal().getWidth()) / 2) > 1300 || e.getSceneY() + (dragImageView.getBoundsInLocal().getHeight() / 2)>720 || intersectionComposant(dragImageView)||( dragImageView.getId().equals("clock") && ( horloged)))
+
+							{
+								workSpace.getChildren().remove(dragImageView);
+								Circuit.supprimerComp(Circuit.getCompFromImage(dragImageView));
+								workSpace.getChildren().remove(guideX);
+								workSpace.getChildren().remove(guideXp);
+								workSpace.getChildren().remove(guideY);
+								workSpace.getChildren().remove(guideYp);
+							}
+							else
+							{
+								if( dragImageView.getId().equals("clock")  ) {
+									horloged =true;
+									horlogeDeCercuit=dragImageView;
+
+								}
+						
+								ArrayList<Polyline> polyline = ram.generatePolyline(dragImageView.getLayoutX(), dragImageView.getLayoutY());
+								addAllPolylinesToWorkSpace(polyline);
+							
+							//	ajouterLeGestApresCollage(dragImageView);
+						
+							}
+						}
+					}
+				});
+
+			}
+		}
+	});
+
+}
 
 	public Polyline tracerEntrerApresCollage(Polyline line, Coordonnees crdDebut, boolean relocate) { /// Trecer les fils  d'entrees
 		int i = 0;

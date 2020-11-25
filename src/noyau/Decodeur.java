@@ -24,10 +24,11 @@ public class Decodeur extends Combinatoires{
 	}
 
 	
+	
 	public void genererSorties() { 
 		String bin = concatener(entrees,nombreEntree); // concatener la valeur logique des valeurs en entree
 		int s = Integer.parseInt(bin,2); // convertir le nombre binaire obtenu 
-		for(int i = 0 ; i < nombreSortie ; i++) { // mettre à 1 l'etat du fil correspondant en sortie 
+		for(int i = 0 ; i < nombreSortie ; i++) { // mettre ï¿½ 1 l'etat du fil correspondant en sortie 
 			if (i == s)
 				sorties[i].setEtatLogiqueFil(EtatLogique.ONE);
 			else 
@@ -36,12 +37,12 @@ public class Decodeur extends Combinatoires{
 		
 	}
 	
-	public boolean valider() { // verifier si les entrees sont toutes validées
+	public boolean valider() { // verifier si les entrees sont toutes validï¿½es
 		return (validerEntrees().getNum() == 1)  ? true : false;
 	}
 
 	@Override
-	public void setCord() { /// seter les coordonnées d'entrees/sorties
+	public void setCord() { /// seter les coordonnï¿½es d'entrees/sorties
 		// TODO Auto-generated method stub
 		switch (nombreEntree) {
 		case 1:{
