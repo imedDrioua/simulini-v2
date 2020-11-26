@@ -4,42 +4,38 @@ import java.io.IOException;
 
 import controllers.RamController;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Color;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
-public class RamGraph extends Stage {
+
+public class RamGraph   {
     private RamController ramController;
+    private AnchorPane ramGraph;
+    public RamGraph(double x, double y, AnchorPane workSpace,int adr,int donees) {
 
-    public RamGraph(double x, double y, AnchorPane workSpace, Stage st,int adr,int donees) {
-
-        try {
+     try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("RamGraph.fxml"));
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            this.setScene(scene);
+            AnchorPane root = loader.load();
             this.ramController =loader.getController(); 
             ramController.initRamController();
-			this.setX(x + st.getX());
-			this.initStyle(StageStyle.UNDECORATED);
-			this.setY(y + st.getY());
-			this.setFullScreen(false);
-			this.toBack();
-            this.initOwner(st);
-            this.initStyle(StageStyle.TRANSPARENT);
-            scene.setFill(Color.TRANSPARENT);
-			this.show();
+            root.setLayoutX(x);
+            root.setLayoutY(y);
+            workSpace.getChildren().add(root);
+            this.ramGraph=root;
+            
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }
+     }
 
     }
    public RamController  getController(){
        return this.ramController;
    }
+   public AnchorPane  getRamGraph(){
+    return this.ramGraph;
+}
+
+
 
 }

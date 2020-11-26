@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
 
 public class RamController {
@@ -85,6 +86,12 @@ public class RamController {
     @FXML
     private Circle entreeAdr;
 
+    @FXML
+    private AnchorPane lastchance;
+
+    public AnchorPane getR(){
+        return this.lastchance;
+    }
     public Circle getEntreeAdr(){
         return this.entreeAdr;
     }

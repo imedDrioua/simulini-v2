@@ -1,11 +1,13 @@
 package noyau;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 import application.RamGraph;
 import javafx.geometry.Pos;
 import javafx.scene.control.TextField;
+import javafx.scene.shape.Polyline;
 
 public class Ram extends Composant {
     /**
@@ -24,6 +26,8 @@ public class Ram extends Composant {
         this.taillAdr=taillAdr; 
         this.taillDonees=taillDonees;
         this.sortie = new FilSp();
+        this.nombreSortie =1;
+        this.nombreEntree=1;
         for(int i=0 ; i<taillDonees ;i++){
                 Fil f=new Fil();
               if (i>=2 ) f.setEtatLogiqueFil(EtatLogique.ONE);
@@ -34,6 +38,26 @@ public class Ram extends Composant {
         this.chargementDesAdresses();
         lesCoordonnees = new LesCoordonnees(2,1,4);
     }
+    public ArrayList<Polyline> generatePolyline(double x,double y) { /// generer les polylines de sorties du composant
+		// TODO Auto-generated method stub
+		setCord();	
+		Polyline polyline = null;
+		double posX ;
+		double posY ;
+		ArrayList<Polyline> reslut = new ArrayList<Polyline>();
+		ArrayList<InfoPolyline> listPolylines ;
+		for (int i = 0; i < nombreSortie; i++) {
+			listPolylines = new ArrayList<InfoPolyline>();
+			posX = x + lesCoordonnees.getCordSortieInIndex(i).getX()+56 ;
+			posY = y  + lesCoordonnees.getCordSortieInIndex(i).getY()+3;
+			polyline = new Polyline(posX ,posY,posX,posY+15);
+			polyline.toBack();
+			listPolylines.add(new InfoPolyline(polyline));
+			reslut.add(polyline);
+			Circuit.ajouterFil(sorties[i], listPolylines);;
+		}		
+		return reslut;
+	}
 
     @Override
     public void setCord() {
@@ -43,7 +67,7 @@ public class Ram extends Composant {
         lesCoordonnees.setCordCmdInIndex(new Coordonnees(ramGraph.getController().getEntreeEcr().getLayoutX(),ramGraph.getController().getEntreeEcr().getLayoutY()+2), 1);
         lesCoordonnees.setCordCmdInIndex(new Coordonnees(ramGraph.getController().getEntreeHor().getLayoutX(),ramGraph.getController().getEntreeHor().getLayoutY()+2), 2);
         lesCoordonnees.setCordCmdInIndex(new Coordonnees(ramGraph.getController().getEntreeCs().getLayoutX(),ramGraph.getController().getEntreeCs().getLayoutY()+2), 3);
-        lesCoordonnees.setCordSortieInIndex(new Coordonnees(ramGraph.getController().getSortieDonees().getCenterX(),ramGraph.getController().getEntreeCs().getLayoutY()+2), 0);
+        lesCoordonnees.setCordSortieInIndex(new Coordonnees(ramGraph.getController().getSortieDonees().getLayoutX(),ramGraph.getController().getEntreeCs().getLayoutY()), 0);
     }
 
     @Override
@@ -129,6 +153,9 @@ public class Ram extends Composant {
         for (int i=0 ; i<nombreDesCases;i++){
             this.ram.put(i,0);
         }
+    }
+    public RamGraph getGraph() {
+        return this.ramGraph;
     }
     
 }

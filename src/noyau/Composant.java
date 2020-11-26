@@ -155,9 +155,9 @@ public abstract class Composant implements Serializable{
 		ArrayList<InfoPolyline> listPolylines ;
 		for (int i = 0; i < nombreSortie; i++) {
 			listPolylines = new ArrayList<InfoPolyline>();
-			posX = x+ lesCoordonnees.getCordSortieInIndex(i).getX() ;
-			posY = y + lesCoordonnees.getCordSortieInIndex(i).getY();
-			polyline = new Polyline(posX ,posY,posX+5,posY);
+			posX = x + lesCoordonnees.getCordSortieInIndex(i).getX()+56 ;
+			posY = y  + lesCoordonnees.getCordSortieInIndex(i).getY()+3;
+			polyline = new Polyline(posX ,posY,posX,posY+15);
 			polyline.toBack();
 			listPolylines.add(new InfoPolyline(polyline));
 			reslut.add(polyline);

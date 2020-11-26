@@ -1391,18 +1391,11 @@ public class HomeController extends Controller {
 							elementAdrager.setCursor(Cursor.DEFAULT);
 							dragImageView.setId(elementAdrager.getId());
 							Ram ram = new Ram(4,4);
-							ram.initialiser(new RamGraph(dragImageView.getLayoutX(),dragImageView.getLayoutY(),workSpace,homeWindow,4,4));
-
-							//Image img = new Image(Circuit.getCompFromImage(dragImageView).generatePath());
-							//dragImageView.setImage(img);
-							//dragImageView.setFitHeight(img.getHeight());
-							//dragImageView.setFitWidth(img.getWidth());
-
+							ram.initialiser(new RamGraph(dragImageView.getLayoutX(),dragImageView.getLayoutY(),workSpace,4,4));
 							if( dragImageView.getLayoutX() <= 0 ||dragImageView.getLayoutY() <= 0|| (e.getSceneX() +( dragImageView.getBoundsInLocal().getWidth()) / 2) > 1300 || e.getSceneY() + (dragImageView.getBoundsInLocal().getHeight() / 2)>720 || intersectionComposant(dragImageView)||( dragImageView.getId().equals("clock") && ( horloged)))
 
 							{
 								workSpace.getChildren().remove(dragImageView);
-								Circuit.supprimerComp(Circuit.getCompFromImage(dragImageView));
 								workSpace.getChildren().remove(guideX);
 								workSpace.getChildren().remove(guideXp);
 								workSpace.getChildren().remove(guideY);
@@ -1410,14 +1403,10 @@ public class HomeController extends Controller {
 							}
 							else
 							{
-								if( dragImageView.getId().equals("clock")  ) {
-									horloged =true;
-									horlogeDeCercuit=dragImageView;
-
-								}
 						
-								ArrayList<Polyline> polyline = ram.generatePolyline(dragImageView.getLayoutX(), dragImageView.getLayoutY());
+								ArrayList<Polyline> polyline = ram.generatePolyline(ram.getGraph().getRamGraph().getLayoutX(),ram.getGraph().getRamGraph().getLayoutY());
 								addAllPolylinesToWorkSpace(polyline);
+								workSpace.getChildren().remove(dragImageView);
 							
 							//	ajouterLeGestApresCollage(dragImageView);
 						
@@ -4033,19 +4022,7 @@ public class HomeController extends Controller {
 
 						{	    	        			    	        	
 						EditableDraggableText text=new EditableDraggableText(dragImageView.getLayoutX(),dragImageView.getLayoutY(),"T");
-							Ram ram = new Ram(4,4);
-							ram.initialiser(new RamGraph(dragImageView.getLayoutX(),dragImageView.getLayoutY(),workSpace,homeWindow,4,4));
-							FilSp fsp = new FilSp();
-							Fil fil= new Fil();
-							fil.setEtatLogiqueFil(EtatLogique.ONE);
-							Fil fil1= new Fil();
-							fil1.setEtat(EtatLogique.ONE);
-							fsp.getFils().add(fil);
-							fsp.getFils().add(fil1);
-							//ram.setSor(fsp);
-							ram.setAdr(fsp);
-		                    ram.ecriture();
-							ram.lecture();
+						
 							
 						workSpace.getChildren().add(text);
 					//	workSpace.getChildren().add(ramGraph);
